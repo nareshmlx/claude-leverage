@@ -29,21 +29,30 @@ custom code that a standard library handles better.
 
 ## install
 
-### Claude Code — plugin (recommended, one command)
-This repo is a self-contained Claude Code plugin (`.claude-plugin/plugin.json`) and its own
-marketplace (`.claude-plugin/marketplace.json`). The 3 skills are auto-discovered from `skills/`.
+### Claude Code — plugin (recommended)
+This repo is a self-contained Claude Code plugin + its own marketplace. The 3 skills
+auto-discover from `skills/`.
 
 ```bash
-# from a published git repo
-/plugin marketplace add <your-org>/leverage
-/plugin install leverage
-
-# or from a local clone
-/plugin marketplace add ./path/to/leverage
-/plugin install leverage
+/plugin marketplace add nareshmlx/claude-leverage
+/plugin install leverage@leverage
+/reload-plugins
 ```
-> Publishing: push this repo to GitHub, then `/plugin marketplace add <org>/<repo>`. Update the
-> `author`/`source` in `.claude-plugin/*.json` if your repo path differs.
+Run `/doctor` to confirm 0 plugin errors.
+
+**Updating later** — the install cache is keyed by version, so a marketplace refresh alone
+won't replace the installed copy; reinstall:
+```bash
+/plugin marketplace update leverage
+/plugin uninstall leverage@leverage
+/plugin install leverage@leverage
+/reload-plugins
+```
+> Forking your own copy? Edit `author` + repo URL in `.claude-plugin/plugin.json` and
+> `marketplace.json`, push, then `/plugin marketplace add <your-org>/<repo>`.
+
+> **Don't also manual-copy the skills** (below) if you installed the plugin — you'll get
+> duplicate entries in the skill menu. Pick one method.
 
 ### Claude Code — manual copy (skills only, no plugin)
 User level (global — every project):
@@ -62,13 +71,38 @@ cp -r skills/leverage skills/leverage-init skills/leverage-scan .claude/skills/
 
 ---
 
-## commands
+## usage — step by step
 
-| Skill | When | What |
-|-------|------|------|
-| `leverage-init` | Session start | Read project, detect stack, build context |
-| `leverage` | Every feature request | Find the existing solution |
-| `leverage-scan` | On demand | Audit codebase for reinvented wheels |
+After install the skills fire **automatically on intent** — no slash command needed.
+Just talk normally; they trigger on what you're doing.
+
+**1. Starting on a project → `leverage-init`**
+Purpose: map your stack so nothing gets recommended that you already have.
+Say *"read my project"* / *"understand my stack"* (or it auto-runs each session via the
+SessionStart hook). It reports language, framework, installed deps, and integrations.
+
+**2. About to build a feature → `leverage`**
+Purpose: find the existing library/SDK/API instead of writing custom code.
+Just describe the feature — *"add login"*, *"I need file uploads"*, *"how do I send email"*.
+It returns the standard tool for that domain, whether it's already installed, and the
+minimal integration snippet.
+
+**3. Cleaning up existing code → `leverage-scan`**
+Purpose: spot where you reinvented something a library already does.
+Say *"audit dependencies"* / *"what am I reinventing"* (or `/leverage-scan`). It returns a
+findings list — it never edits your code.
+
+**One-liner:** new project → `init` · new feature → `leverage` · old code → `scan`.
+
+Every recommendation is **tiered**: **★ standard** (the safe default you get automatically) ·
+**◆ newer-proven** · **⚡ cutting-edge** · **⚠️ avoid**. Ask for *"the newer / advanced option"*
+to get the ◆/⚡ picks.
+
+| Skill | Use when | Purpose |
+|-------|----------|---------|
+| `leverage-init` | Starting on a project (once) | Detect stack + what's installed |
+| `leverage` | Before building any feature | Find the existing solution, tiered |
+| `leverage-scan` | Reviewing existing code | List reinvented wheels (no edits) |
 
 ---
 
