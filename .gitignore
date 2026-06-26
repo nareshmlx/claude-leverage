@@ -1,0 +1,18 @@
+# session / local agent state — never track
+.remember/
+.openclaw/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# deps / build (in case examples get added later)
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+dist/
+build/

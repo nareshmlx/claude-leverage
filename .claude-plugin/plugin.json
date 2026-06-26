@@ -1,0 +1,23 @@
+{
+  "name": "leverage",
+  "version": "1.0.0",
+  "description": "Before writing code, find the existing solution. Recommends the SOTA library/SDK/API per domain, tiered standard -> newer-proven -> cutting-edge, stack-aware from session start.",
+  "author": {
+    "name": "nareshmlx",
+    "email": "nareshrajaml@bigvisionllc.com"
+  },
+  "repository": "https://github.com/nareshmlx/claude-leverage",
+  "homepage": "https://github.com/nareshmlx/claude-leverage",
+  "license": "MIT",
+  "keywords": [
+    "leverage",
+    "skills",
+    "dependencies",
+    "libraries",
+    "sota",
+    "stack-aware",
+    "tooling",
+    "best-practices",
+    "2026"
+  ]
+}
