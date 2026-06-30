@@ -25,6 +25,11 @@ default by default, and the advanced alternatives only when you ask.
 **On-demand audit** (`leverage-scan`): Points at any file or diff and returns a list of
 custom code that a standard library handles better.
 
+**Before committing to an approach** (`research-to-decide`): When the open question is *how*
+to do something (methodology, not just which library), researches best-in-class practices,
+verifies against current evidence, and hands you a decision-support artifact — current-state
+map + options with pros/cons + recommendation + phased roadmap. You make the call.
+
 ---
 
 ## install
@@ -76,6 +81,11 @@ cp -r skills/leverage skills/leverage-init skills/leverage-scan .claude/skills/
 After install the skills fire **automatically on intent** — no slash command needed.
 Just talk normally; they trigger on what you're doing.
 
+**0. Deciding *how* to do something (approach unclear) → `research-to-decide`**
+Purpose: research the best-in-class approach before committing, when the question is
+methodology — not just which library. Say *"research best practices for X"*, *"what's the
+industry standard for Y"*, *"should we adopt Z"*. Produces a decision-support artifact (you decide).
+
 **1. Starting on a project → `leverage-init`**
 Purpose: map your stack so nothing gets recommended that you already have.
 Say *"read my project"* / *"understand my stack"* (or it auto-runs each session via the
@@ -92,7 +102,7 @@ Purpose: spot where you reinvented something a library already does.
 Say *"audit dependencies"* / *"what am I reinventing"* (or `/leverage-scan`). It returns a
 findings list — it never edits your code.
 
-**One-liner:** new project → `init` · new feature → `leverage` · old code → `scan`.
+**One-liner:** open approach → `research-to-decide` · new project → `init` · new feature → `leverage` · old code → `scan`.
 
 Every recommendation is **tiered**: **★ standard** (the safe default you get automatically) ·
 **◆ newer-proven** · **⚡ cutting-edge** · **⚠️ avoid**. Ask for *"the newer / advanced option"*
@@ -100,6 +110,7 @@ to get the ◆/⚡ picks.
 
 | Skill | Use when | Purpose |
 |-------|----------|---------|
+| `research-to-decide` | Approach/methodology is the open question | Research best practice → decision-support artifact |
 | `leverage-init` | Starting on a project (once) | Detect stack + what's installed |
 | `leverage` | Before building any feature | Find the existing solution, tiered |
 | `leverage-scan` | Reviewing existing code | List reinvented wheels (no edits) |

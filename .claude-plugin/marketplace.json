@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
   "name": "leverage",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "leverage — find the existing solution before writing code.",
   "owner": {
     "name": "nareshmlx",
@@ -10,7 +10,7 @@
   "plugins": [
     {
       "name": "leverage",
-      "description": "Tiered SOTA tool recommender. Bundles 3 skills: leverage (always-on lookup), leverage-init (session-start stack detection), leverage-scan (audit code for reinvented wheels).",
+      "description": "Tiered SOTA tool recommender. Bundles 4 skills: leverage (lookup), leverage-init (stack detection), leverage-scan (audit reinvented wheels), research-to-decide (research best practices before committing to an approach).",
       "source": "./",
       "category": "development",
       "keywords": ["dependencies", "libraries", "sota", "stack-aware", "tooling"]

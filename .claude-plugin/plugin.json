@@ -1,7 +1,7 @@
 {
   "name": "leverage",
-  "version": "1.0.0",
-  "description": "Before writing code, find the existing solution. Recommends the SOTA library/SDK/API per domain, tiered standard -> newer-proven -> cutting-edge, stack-aware from session start.",
+  "version": "1.1.0",
+  "description": "Before writing code, find the existing solution. Recommends the SOTA library/SDK/API per domain (tiered standard -> newer-proven -> cutting-edge), maps your stack, audits for reinvented wheels, and researches best practices before you commit to an approach.",
   "author": {
     "name": "nareshmlx",
     "email": "nareshrajaml@bigvisionllc.com"
